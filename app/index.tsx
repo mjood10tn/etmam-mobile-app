@@ -21,7 +21,7 @@ const App = () => {
         
       } catch (e) {
         console.log(e);
-      }
+      } 
       setStatus("idle");
     }
     runEffect();
