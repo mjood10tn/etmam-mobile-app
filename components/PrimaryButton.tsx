@@ -10,7 +10,7 @@ export default function PrimaryButton({ title, loading = false, ...props }: Prim
   return (
     <TouchableOpacity style={styles.button} {...props} disabled={loading}>
       {loading ? (
-        <ActivityIndicator style={styles.loadingIndicator} color="#fff" />
+        <ActivityIndicator style={styles.loadingIndicator} />
       ) : (
         <Text style={styles.buttonText}>{title}</Text>
       )}
@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
   },
   loadingIndicator: {
     width: '100%',
-    
-    backgroundColor: '#a86b03',
-        alignSelf: 'center',
+    alignSelf: 'center',
   },
 });

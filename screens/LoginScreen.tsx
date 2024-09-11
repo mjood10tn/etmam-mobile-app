@@ -1,41 +1,57 @@
 import { useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform , Text } from 'react-native';
 import Logo from "../components/Logo";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
-import { login, loadUser,loadUserData } from "../services/AuthService";
+import { login, loadUser } from "../services/AuthService";
 import AuthContext from '@/contexts/AuthContext';
 import * as Application from 'expo-application';
+import * as Device from 'expo-device';
 
 
 
 export default function () {
 
-  const { setUser,setUserData } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleLogin() {
     // get device id for android and ios 
-    const deviceId = Platform.OS === 'android' ? Application.getAndroidId() : Application.getIosIdForVendorAsync(); 
-    
+    const deviceId = Platform.OS === 'android' ? Application.getAndroidId() : Application.getIosIdForVendorAsync();
+
     setErrors({});
     try {
-      await login({
+      setIsLoading(true);
+      try {
+
+        await login({
           email,
           password,
           device_name: `${Platform.OS} ${Platform.Version}`,
           deviceId: deviceId,
+          Brand: Device.brand,
+          deviceType: Device.deviceType,
+          manufacturer: Device.manufacturer,
+          osBuildId: Device.osBuildId,
+          osName: Device.osName,
+          osVersion: Device.osVersion,
         });
-      const user = await loadUser();
-      setUser(user);
-      console.log(user)
- 
+
+        const user = await loadUser();
+        setUser(user);
+      } finally {
+        setIsLoading(false);
+      }
+
+
     } catch (e: any) {
-      console.log(e.response.data);
       if (e.response.status === 422) {
-        setErrors(e.response.data.errors);
+        console.log(e.response.data);
+        setErrors(e.response.data);
       }
     }
   }
@@ -43,12 +59,13 @@ export default function () {
     <View style={styles.container}>
       <View style={styles.loginContainer}>
         <Logo />
+        {errors.message === null ? null : <Text style={{ color: 'red' }}> {errors.message} </Text>}
         <Input
           placeholder="البريد الإلكتروني"
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
-          errors={errors.email}
+          errors={errors.errors?.email}
 
         />
 
@@ -57,9 +74,9 @@ export default function () {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
-          errors={errors.password}
+          errors={errors.errors?.password}
         />
-        <PrimaryButton onPress={handleLogin} title="تسجيل الدخول" />
+        <PrimaryButton onPress={handleLogin}   title="تسجيل الدخول" loading={isLoading} />
       </View>
       <StatusBar style="auto" />
     </View>

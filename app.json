@@ -1,36 +1,46 @@
 {
   "expo": {
-    "name": "etmam-mobile-app",
+    "name": "إتمام",
     "slug": "etmam-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logos/AndroidIcons/72x72.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/logos/AndroidIcons/144x144.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logos/AndroidIcons/72x72.png",
+        "resizeMode": "contain",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mjood10tn.etmammobileapp"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo.png"
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "812e23f8-9414-4725-900e-5b2a8bf6be2d"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.mjood10tn.etmammobileapp"
     }
   }
 }
