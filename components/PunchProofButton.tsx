@@ -5,7 +5,7 @@ import {  CircleCheckBig, CircleX, X } from 'lucide-react-native';
 
 
 
-export default function PunchLeaveButton() {
+export default function PunchProofButton() {
       const [modalVisible, setModalVisible] = useState(false);
       const [isLoading, setIsLoading] = useState(false);
       const [responseMsg, setResponseMsg] = useState<string | null>(null);
@@ -24,12 +24,12 @@ export default function PunchLeaveButton() {
             try {
                   try {
 
-                        //send 1 for punch leave 
-                        const response = await sendLoaction(1);
+                        //send 100 for  Proof of presence 
+                        const response = await sendLoaction(100);
                         console.log(response.message);
                         if (response.message === 'success') {
 
-                              await setResponseMsg('تم تسجيل الخروج بنجاح');
+                              await setResponseMsg('تم إثبات التواجد بنجاح');
                               await setResponseStatus(true);
                               await setResponseModal(true);
                         }
@@ -68,7 +68,7 @@ export default function PunchLeaveButton() {
 
                         <Text></Text>
                         <Pressable onPress={handlePress} style={styles.button}>
-                              <Text style={styles.buttonText}>تسجيل خروج</Text>
+                              <Text style={styles.buttonText}>إثبات التواجد</Text>
                         </Pressable>
 
                   </View>
@@ -82,7 +82,7 @@ export default function PunchLeaveButton() {
                               onRequestClose={handleCancel} >
                               <View style={styles.container}>
                                     <View style={styles.modalView}>
-                                          <Text style={styles.modalTitle}> تسجيل خروج </Text>
+                                          <Text style={styles.modalTitle}> إثبات التواجد </Text>
                                           <Text>هل انت متأكد من المتابعة؟</Text>
 
                                           <View style={styles.buttonContainer}>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
       button: {
             width: '100%',
             padding: 15,
-            backgroundColor: 'tomato',
+            backgroundColor: '#3457D5',
             borderRadius: 5,
             alignItems: 'center',
             marginTop: 20,
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
             fontSize: 18,
             fontWeight: 'bold',
             paddingBottom: 20,
-            color: 'red',
+            color: '#3457D5',
       },
       buttonContainer: {
             gap: 10,

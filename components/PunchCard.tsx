@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { checkGPS, checkLocationPermission } from '@/services/LoactionService';
 import PunchEnterButton from './PunchEnterButton';
 import PunchLeaveButton from './PunchLeaveButton';
+import PunchProofButton from './PunchProofButton';
 
 
 export default function PunchCard() {
@@ -50,6 +51,7 @@ export default function PunchCard() {
         // user granted location permission
         <View >
           <PunchEnterButton />
+          <PunchProofButton />
           <PunchLeaveButton />
 
 
