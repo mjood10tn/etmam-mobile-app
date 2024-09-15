@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppState, StyleSheet, Text, View } from 'react-native';
 
 import { checkGPS, checkLocationPermission } from '@/services/LoactionService';
 import PunchEnterButton from './PunchEnterButton';
@@ -8,56 +8,46 @@ import PunchProofButton from './PunchProofButton';
 
 
 export default function PunchCard() {
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [GPSerrorMsg, setGPSErrorMsg] = useState<string | null>(null);
+  const [getIsUpdated, setIsUpdated] = useState(false);
+  const [appState, setAppState] = useState(AppState.currentState);
 
   // get location on component mount
   useEffect(() => {
-    const checkPermission = async () => {
+    async function runEffect() {
+
       const hasPermission = await checkLocationPermission();
       if (!hasPermission) {
-        setErrorMsg('يجب السماح بالوصول للموقع الحالي');
+        setGPSErrorMsg('يجب السماح بالوصول للموقع الحالي');
       } else {
-        setErrorMsg(null);
+        setGPSErrorMsg(null);
       }
 
-    };
-    const checkGPSFn = async () => {
+
       const gpsStatus = await checkGPS();
       if (!gpsStatus) {
-        setErrorMsg('يبدو ان GPS غير مفعل');
+        setGPSErrorMsg('يبدو ان GPS غير مفعل');
       } else {
-        setErrorMsg(null);
+        setGPSErrorMsg(null);
       }
 
-    };
-
-    checkPermission();
-    checkGPSFn();
-
-
-
+    }
+    // runEffect();
   }, []);
-
-
 
   return (
     <View style={styles.card}>
       <Text style={styles.cardTitle}>الحضور والانصراف</Text>
-      {errorMsg ?
-        // user denied location permission
-        <Text style={styles.cardError}>{errorMsg}</Text>
 
-        :
-        // user granted location permission
-        <View >
-          <PunchEnterButton />
-          <PunchProofButton />
-          <PunchLeaveButton />
+      <View >
+        <PunchEnterButton />
+        <PunchProofButton />
+        <PunchLeaveButton />
 
 
-        </View>
+      </View>
 
-      }
+
 
     </View>
   );

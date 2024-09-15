@@ -37,6 +37,27 @@ async function getLocation(): Promise<Location.LocationObject | null> {
 // this function will send the location to the server
 export async function sendLoaction(punch: number) {
 
+
+  const gpsStatus = await checkGPS();
+  if (!gpsStatus) {
+    throw {
+      response: {
+        data: {
+          message: 'يبدو ان GPS غير مفعل'
+        }
+      }
+    }
+  }
+  const hasPermission = await checkLocationPermission();
+  if (!hasPermission) {
+    throw {
+      response: {
+        data: {
+          message: 'يجب السماح بالوصول للموقع الحالي'
+        }
+      }
+    }
+  }
   const checkIfFakeLocation = await isGPSMocked()
   const isRootedDevice = await isRooted();
   if (checkIfFakeLocation === false && isRootedDevice === false) {
@@ -50,10 +71,12 @@ export async function sendLoaction(punch: number) {
       // console.log('longitude:', longitude);
       // send location to server
       const deviceId = Platform.OS === 'android' ? Application.getAndroidId() : Application.getIosIdForVendorAsync();
-console.log({   punch,
-  latitude,
-  longitude,
-  deviceId})
+      console.log({
+        punch,
+        latitude,
+        longitude,
+        deviceId
+      })
       const { data: status } = await axios.post("/setMobilePunch", {
         punch,
         latitude,
@@ -63,8 +86,7 @@ console.log({   punch,
       return status;
     }
 
-  }
-  else {
+  } else {
     throw {
       response: {
         data: {
