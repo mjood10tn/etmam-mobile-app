@@ -66,9 +66,10 @@ export default function PunchLeaveButton() {
 
                   <View >
 
-                        <Text></Text>
+                  
                         <Pressable onPress={handlePress} style={styles.button}>
                               <Text style={styles.buttonText}>تسجيل خروج</Text>
+                     
                         </Pressable>
 
                   </View>
@@ -100,7 +101,7 @@ export default function PunchLeaveButton() {
                         </Modal>
 
                   </View>
-                  {/* success modal */}
+                  {/* Response modal */}
                   <View>
                         <Modal
                               animationType="fade"

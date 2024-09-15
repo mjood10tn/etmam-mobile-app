@@ -6,7 +6,7 @@ import {  StyleSheet, Text, SafeAreaView } from 'react-native';
 export default function LoadingScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>loading</Text>
+      <Text style={styles.text}>Loading...</Text>
     </SafeAreaView>
   );
 }

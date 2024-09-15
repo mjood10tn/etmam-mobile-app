@@ -66,7 +66,7 @@ export default function PunchProofButton() {
 
                   <View >
 
-                        <Text></Text>
+                     
                         <Pressable onPress={handlePress} style={styles.button}>
                               <Text style={styles.buttonText}>إثبات التواجد</Text>
                         </Pressable>
@@ -100,7 +100,7 @@ export default function PunchProofButton() {
                         </Modal>
 
                   </View>
-                  {/* success modal */}
+                  {/* Response modal */}
                   <View>
                         <Modal
                               animationType="fade"

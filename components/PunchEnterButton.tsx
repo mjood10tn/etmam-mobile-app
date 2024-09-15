@@ -66,7 +66,7 @@ export default function PunchEnterButton() {
 
                   <View >
 
-                        <Text></Text>
+                      
                         <Pressable onPress={handlePress} style={styles.button}>
                               <Text style={styles.buttonText}>تسجيل دخول</Text>
                         </Pressable>
@@ -100,7 +100,7 @@ export default function PunchEnterButton() {
                         </Modal>
 
                   </View>
-                  {/* success modal */}
+                  {/* Response modal */}
                   <View>
                         <Modal
                               animationType="fade"

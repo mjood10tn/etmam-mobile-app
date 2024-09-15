@@ -2,10 +2,10 @@ import PunchCard from '@/components/PunchCard';
 import AuthContext from '@/contexts/AuthContext';
 import { logout } from '@/services/AuthService';
 import { useContext,useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, Button, View, I18nManager,ActivityIndicator, Pressable } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, I18nManager, Pressable } from 'react-native';
 
 // Enable RTL layout
-I18nManager.forceRTL(true);
+// I18nManager.forceRTL(true);
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -95,16 +95,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   infoContainer: {
-    flexDirection: 'row-reverse', // Adjust for RTL
+    
+    flexDirection: 'row', 
     marginBottom: 8,
   },
   label: {
     fontWeight: 'bold',
-    marginLeft: 8, // Adjust for RTL
+    marginLeft: 8,
     color: '#F59E0A',
   },
   value: {
-    textAlign: 'left',
+    textAlign: 'right',
     flex: 1,
     color: '#333',
   },
