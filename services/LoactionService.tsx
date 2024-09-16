@@ -58,8 +58,12 @@ export async function sendLoaction(punch: number) {
       }
     }
   }
-  const checkIfFakeLocation = await isGPSMocked()
+  // check if the location is mocked or not, and if the device is ios  return false
+  const checkIfFakeLocation = Platform.OS === 'android' ? await isGPSMocked() : false;
   const isRootedDevice = await isRooted();
+  const location = await getLocation();
+
+
   if (checkIfFakeLocation === false && isRootedDevice === false) {
 
     const location = await getLocation();
@@ -70,13 +74,7 @@ export async function sendLoaction(punch: number) {
       // console.log('latitude:', latitude);
       // console.log('longitude:', longitude);
       // send location to server
-      const deviceId = Platform.OS === 'android' ? Application.getAndroidId() : Application.getIosIdForVendorAsync();
-      console.log({
-        punch,
-        latitude,
-        longitude,
-        deviceId
-      })
+      const deviceId = Platform.OS === 'android' ? await Application.getAndroidId() : await Application.getIosIdForVendorAsync();
       const { data: status } = await axios.post("/setMobilePunch", {
         punch,
         latitude,

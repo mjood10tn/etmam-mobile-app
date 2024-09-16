@@ -21,13 +21,12 @@ export default function () {
 
   async function handleLogin() {
     // get device id for android and ios 
-    const deviceId = Platform.OS === 'android' ? Application.getAndroidId() : Application.getIosIdForVendorAsync();
+    const deviceId = Platform.OS === 'android' ? await Application.getAndroidId() : await Application.getIosIdForVendorAsync();
 
     setErrors({});
     try {
       setIsLoading(true);
       try {
-
         await login({
           email,
           password,
