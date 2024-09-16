@@ -4,7 +4,7 @@
     "slug": "etmam-mobile-app",
     "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/images/logos/AndroidIcons/72x72.png",
+    "icon": "./assets/images/logos/AppIcon-appiconset/iTunesArtwork-1024.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
