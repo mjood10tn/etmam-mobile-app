@@ -1,11 +1,11 @@
 import PunchCard from '@/components/PunchCard';
 import AuthContext from '@/contexts/AuthContext';
 import { logout } from '@/services/AuthService';
-import { useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, View, I18nManager, Pressable } from 'react-native';
 
 // Enable RTL layout
-// I18nManager.forceRTL(true);
+
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,8 +20,10 @@ export default function HomeScreen() {
     } finally {
       setIsLoading(false);
     }
-  
+
   };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
@@ -42,9 +44,9 @@ export default function HomeScreen() {
           <Text style={styles.value}>{user?.userData.job_title_id}</Text>
         </View>
         <View style={styles.buttonContainer}>
-       
+
           <Pressable style={styles.logoutbtn} disabled={isLoading} onPress={handleLogout}  >
-        <Text >{isLoading ? 'جاري تسجيل الخروج...' : 'تسجيل الخروج من التطبيق'}</Text>
+            <Text >{isLoading ? 'جاري تسجيل الخروج...' : 'تسجيل الخروج من التطبيق'}</Text>
           </Pressable>
         </View>
       </View>
@@ -65,9 +67,9 @@ const styles = StyleSheet.create({
   },
   loadingIndicator: {
     width: '100%',
-    
+
     backgroundColor: '#a86b03',
-        alignSelf: 'center',
+    alignSelf: 'center',
   },
   container: {
     flex: 1,
@@ -95,17 +97,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   infoContainer: {
-    
-    flexDirection: 'row', 
+    flexDirection: 'row-reverse', 
     marginBottom: 8,
   },
   label: {
+    // textAlign: 'right',
     fontWeight: 'bold',
     marginLeft: 8,
     color: '#F59E0A',
   },
   value: {
-    textAlign: 'right',
+    textAlign: 'left',
     flex: 1,
     color: '#333',
   },

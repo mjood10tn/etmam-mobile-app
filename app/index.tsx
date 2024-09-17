@@ -14,7 +14,7 @@ import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
 
 const Stack = createStackNavigator();
-// Enable RTL layout
+
 const App = () => {
   const [user, setUser] = useState();
   const [status, setStatus] = useState("loading");
