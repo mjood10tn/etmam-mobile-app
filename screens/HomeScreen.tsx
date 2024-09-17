@@ -5,7 +5,7 @@ import { useContext,useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, View, I18nManager, Pressable } from 'react-native';
 
 // Enable RTL layout
-// I18nManager.forceRTL(true);
+I18nManager.forceRTL(true);
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
   },
   container: {
+    marginTop: 16,
     flex: 1,
     padding: 16,
     backgroundColor: '#f5f5f5',
@@ -96,16 +97,18 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     
-    flexDirection: 'row', 
+    flexDirection: 'row-reverse', 
     marginBottom: 8,
   },
   label: {
     fontWeight: 'bold',
     marginLeft: 8,
     color: '#F59E0A',
+    // textAlign: 'right',
+
   },
   value: {
-    textAlign: 'right',
+    textAlign: 'left',
     flex: 1,
     color: '#333',
   },
