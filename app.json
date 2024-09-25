@@ -13,6 +13,7 @@
       "backgroundColor": "#F8F9FA"
     },
     "android": {
+      "versionCode": 103 ,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logos/adaptive-icon.png",
         "resizeMode": "contain",
