@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { AppState, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, I18nManager, AppState } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { checkGPS, checkLocationPermission } from '@/services/LoactionService';
 import PunchEnterButton from './PunchEnterButton';
 import PunchLeaveButton from './PunchLeaveButton';
 import PunchProofButton from './PunchProofButton';
-
+import styles from '@/assets/styles/styles';
 
 export default function PunchCard() {
   const [GPSerrorMsg, setGPSErrorMsg] = useState<string | null>(null);
@@ -36,77 +37,31 @@ export default function PunchCard() {
   }, []);
 
   return (
+
+
+
+
     <View style={styles.card}>
+
+
       <Text style={styles.cardTitle}>الحضور والانصراف</Text>
-
-      <View >
-        <PunchEnterButton />
-        <PunchProofButton />
-        <PunchLeaveButton />
-
-
-      </View>
-
+      <PunchEnterButton />
+      <PunchProofButton />
+      <PunchLeaveButton />
+      {/* <TouchableOpacity onPress={() => showConfirmation('Proof of Attendance')}>
+          <LinearGradient colors={['#4E54C8', '#b1b5fa']} style={styles.button} start={[1, 0]} end={[0, 4]}>
+            <Text style={styles.buttonText}>إثبات الحضور</Text>
+            <Ionicons name="document-text-outline" size={24} color="white" />
+          </LinearGradient>
+        </TouchableOpacity> */}
+      {/* <TouchableOpacity onPress={() => showConfirmation('Punch Out')}>
+          <LinearGradient colors={['#cf2d2d', '#f7dada']} style={styles.button} start={[1, 0]} end={[0, 4]}>
+            <Text style={styles.buttonText}>تسجيل الخروج</Text>
+            <Ionicons name="log-out-outline" size={24} color="white" />
+          </LinearGradient>
+        </TouchableOpacity> */}
 
 
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonIn: {
-    width: '100%',
-    padding: 15,
-    backgroundColor: 'green',
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonOut: {
-    width: '100%',
-    padding: 15,
-    backgroundColor: 'red',
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  card: {
-    width: '90%',
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 5,
-    marginBottom: 16, // Space between cards
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  cardError: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    color: 'red',
-    textAlign: 'center',
-  },
-  infoContainer: {
-    marginBottom: 10,
-  },
-  label: {
-    fontWeight: 'bold',
-  },
-  value: {
-    marginLeft: 10,
-  },
-});

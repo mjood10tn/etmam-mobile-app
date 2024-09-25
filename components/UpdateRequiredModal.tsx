@@ -1,5 +1,5 @@
-import { View, Text, Pressable, Modal, Button, StyleSheet } from 'react-native';
-import {  CircleArrowUp, CircleCheckBig, CircleX, X } from 'lucide-react-native';
+import { View, Text, Modal,StyleSheet } from 'react-native';
+import {  CircleArrowUp } from 'lucide-react-native';
 
 export default function UpdateRequiredModal() {
 
@@ -19,7 +19,7 @@ export default function UpdateRequiredModal() {
                       
                               <CircleArrowUp size={60} color='green'   />
                               <Text style={styles.modalTitle}>
-                              يجود إصدار جديد من تطبيق إتمام, يجب التحديث لاخر اصدار لاستخدام مزايا التطبيق
+                              يجود إصدار جديد من تطبيق إتمام, يجب التحديث لاخر اصدار لإستخدام مزايا التطبيق
                               </Text>
                               <Text >  </Text>
                         </View>

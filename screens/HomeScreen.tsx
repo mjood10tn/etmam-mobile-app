@@ -1,8 +1,12 @@
 import PunchCard from '@/components/PunchCard';
 import AuthContext from '@/contexts/AuthContext';
 import { logout } from '@/services/AuthService';
-import { useContext, useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, View, I18nManager, Pressable } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import styles from '@/assets/styles/styles';
 
 // Enable RTL layout
 
@@ -25,96 +29,44 @@ export default function HomeScreen() {
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>الاسم:</Text>
-          <Text style={styles.value}>{user?.userData.full_name_short}</Text>
-        </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>رقم الموظف:</Text>
-          <Text style={styles.value}>{user?.userData.id}</Text>
-        </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>الادارة:</Text>
-          <Text style={styles.value}>{user?.userData.department_id}</Text>
-        </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>المسمى الوظيفي:</Text>
-          <Text style={styles.value}>{user?.userData.job_title_id}</Text>
-        </View>
-        <View style={styles.buttonContainer}>
+    <LinearGradient
+      colors={['#fff', '#FFC78E']}
+      style={styles.container}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 4, y: 1 }}
+    >
+      <SafeAreaView style={styles.safeArea}>
 
-          <Pressable style={styles.logoutbtn} disabled={isLoading} onPress={handleLogout}  >
-            <Text >{isLoading ? 'جاري تسجيل الخروج...' : 'تسجيل الخروج من التطبيق'}</Text>
-          </Pressable>
-        </View>
-      </View>
+        <StatusBar style="light" backgroundColor="#DA7705" />
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => handleLogout()} style={styles.logoutButton}>
+              <Ionicons name="log-out-outline" size={20} color="white" />
+            </TouchableOpacity>
+          </View>
 
-      <PunchCard />
-    </SafeAreaView>
+          <View style={styles.card}>
+            <View style={styles.userInfoContainer}>
+              <View style={styles.userInfo}>
+                <Text style={styles.name}>{user?.userData.full_name_short}</Text>
+                <Text style={styles.detail}>معرف الموظف: {user?.userData.id}</Text>
+                <Text style={styles.detail}>{user?.userData.department_id}</Text>
+                <Text style={styles.detail}>{user?.userData.job_title_id}</Text>
+              </View>
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>{user?.userData.full_name_short.split(' ').slice(0, 2).map((word: string) => word[0]).join('')}</Text>
+              </View>
+            </View>
+          </View>
+
+
+          <PunchCard />
+        </ScrollView>
+
+
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
-const styles = StyleSheet.create({
-  logoutbtn: {
-    width: '100%',
-    padding: 15,
-    backgroundColor: '#F59E0A',
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  loadingIndicator: {
-    width: '100%',
 
-    backgroundColor: '#a86b03',
-    alignSelf: 'center',
-  },
-  container: {
-    marginTop: 16,
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-    justifyContent: 'flex-start', // Align items to the top
-    alignItems: 'center',
-  },
-  card: {
-    width: '90%',
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 5,
-    marginBottom: 16, // Space between cards
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#F59E0A',
-    marginBottom: 8,
-  },
-  infoContainer: {
-    flexDirection: 'row-reverse', 
-    marginBottom: 8,
-  },
-  label: {
-    // textAlign: 'right',
-    fontWeight: 'bold',
-    marginLeft: 8,
-    color: '#F59E0A',
-    // textAlign: 'right',
-
-  },
-  value: {
-    textAlign: 'left',
-    flex: 1,
-    color: '#333',
-  },
-  buttonContainer: {
-    marginTop: 16,
-  },
-});

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ScrollView, RefreshControl } from 'react-native';
+import { ScrollView, RefreshControl, I18nManager, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { loadUser, } from "@/services/AuthService";
 import SplashScreen from '../screens/SplashScreen'
@@ -12,9 +12,11 @@ import React from "react";
 import Constants from 'expo-constants';
 import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
+import TestScreen from "@/screens/TestScreen";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Stack = createStackNavigator();
-
+I18nManager.forceRTL(true);
 const App = () => {
   const [user, setUser] = useState();
   const [status, setStatus] = useState("loading");
@@ -28,10 +30,10 @@ const App = () => {
         // Check if the app is updated
         const serverVersion = await getMobileAppVersion();
 
-        if (Constants.expoConfig?.version === serverVersion.app_version  ) {
+        if (Constants.expoConfig?.version === serverVersion.app_version) {
           // app is updated to the latest version
           setIsUpdated(true);
-        }else{
+        } else {
           setIsUpdated(false);
         }
 
@@ -79,39 +81,40 @@ const App = () => {
   }
 
   return (
+      <AuthContext.Provider value={{ user, setUser }}>
 
-    <AuthContext.Provider value={{ user, setUser }}>
-      <ScrollView
-        contentContainerStyle={{ flex: 1 }}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        {getIsUpdated ?  null : <UpdateRequiredModal />}
-        <Stack.Navigator>
+        <ScrollView
+          contentContainerStyle={{ flex: 1 }}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
 
-          {user ? (
-            <Stack.Screen
-              name="home"
-              component={HomeScreen}
-              options={{
-                title: 'الرئيسية',
-                headerTitleAlign: 'center',
-              }} />
-          ) : (
-            <Stack.Screen
-              name="login"
-              component={LoginScreen}
-              options={{
-                title: 'تسجيل الدخول',
-                headerTitleAlign: 'center',
-              }}
-            />
-          )}
-        </Stack.Navigator>
-      </ScrollView>
-    </AuthContext.Provider>
+          {getIsUpdated ? null : <UpdateRequiredModal />}
+          <Stack.Navigator>
 
+            {user ? (
+              <Stack.Screen
+                name="home"
+                component={HomeScreen}
+                options={{
+                  title: 'الرئيسية',
+                  headerTitleAlign: 'center',
+                }} />
+            ) : (
+              <Stack.Screen
+                name="Login"
+                // component={TestScreen}
+                component={LoginScreen}
+                options={{
+                  title: 'تسجيل الدخول',
+                  headerTitleAlign: 'center',
+                }}
+              />
+            )}
+          </Stack.Navigator>
+        </ScrollView>
+      </AuthContext.Provider>
   );
 };
 

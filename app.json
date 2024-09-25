@@ -2,7 +2,7 @@
   "expo": {
     "name": "إتمام",
     "slug": "etmam-mobile-app",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/images/logos/icon.png",
     "scheme": "myapp",
@@ -20,7 +20,6 @@
       },
       "package": "com.mjood10tn.etmammobileapp"
     },
-    
     "ios": {
       "bundleIdentifier": "com.mjood10tn.etmammobileapp"
     },
@@ -30,12 +29,15 @@
       "favicon": "./assets/images/logo.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
+      "supportsRTL": true,
+      "forcesRTL": true,
       "router": {
         "origin": false
       },

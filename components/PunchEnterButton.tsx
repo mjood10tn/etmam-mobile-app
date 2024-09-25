@@ -1,8 +1,10 @@
 import { sendLoaction } from '@/services/LoactionService';
 import React, { useState } from 'react';
-import { View, Text, Pressable, Modal, Button, StyleSheet } from 'react-native';
-import {  CircleCheckBig, CircleX, X } from 'lucide-react-native';
-
+import { View, Text, Pressable, Modal, TouchableOpacity } from 'react-native';
+import { CircleCheckBig, CircleX, X } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
+import styles from '@/assets/styles/styles';
 
 
 export default function PunchEnterButton() {
@@ -65,40 +67,44 @@ export default function PunchEnterButton() {
             <>
 
                   <View >
-
-                      
-                        <Pressable onPress={handlePress} style={styles.button}>
-                              <Text style={styles.buttonText}>تسجيل دخول</Text>
-                        </Pressable>
+                        <TouchableOpacity onPress={handlePress}>
+                              <LinearGradient colors={['#11998E', '#b5f7ce']} style={styles.button} start={[1, 0]} end={[0, 4]}>
+                                    <Text style={styles.buttonText}>تسجيل الدخول</Text>
+                                    <Ionicons name="log-in-outline" size={24} color="white" />
+                              </LinearGradient>
+                        </TouchableOpacity>
 
                   </View>
 
                   {/* confirm modal */}
                   <View>
+
                         <Modal
                               animationType="fade"
                               transparent={true}
                               visible={modalVisible}
-                              onRequestClose={handleCancel} >
-                              <View style={styles.container}>
+                              onRequestClose={handleCancel}>
+                              <View style={styles.centeredView}>
                                     <View style={styles.modalView}>
-                                          <Text style={styles.modalTitle}> تسجيل دخول </Text>
+                                          <Text style={[styles.modalTitle,styles.red]}> تسجيل دخول </Text>
                                           <Text>هل انت متأكد من المتابعة؟</Text>
-
-                                          <View style={styles.buttonContainer}>
-
-                                                <Pressable disabled={isLoading} style={styles.confirmColor} onPress={handleConfirm} >
-
-                                                      <Text style={styles.confirmButtonText} > {isLoading ? 'جاري الارسال...' : 'تأكيد'}</Text>
+                                          <View style={styles.modalButtons}>
+                                                <Pressable
+                                                      disabled={isLoading}
+                                                      style={[styles.modalButton, styles.buttonConfirm]}
+                                                      onPress={handleConfirm}>
+                                                      <Text style={styles.textStyle} > {isLoading ? 'جاري الارسال...' : 'تأكيد'}</Text>
                                                 </Pressable>
-
-
-                                                <Button disabled={isLoading} title="الغاء" onPress={handleCancel} color='red' />
+                                                <Pressable
+                                                      disabled={isLoading}
+                                                      style={[styles.modalButton, styles.buttonCancel]}
+                                                      onPress={handleCancel}>
+                                                      <Text style={styles.textStyle}>إلغاء</Text>
+                                                </Pressable>
                                           </View>
                                     </View>
                               </View>
                         </Modal>
-
                   </View>
                   {/* Response modal */}
                   <View>
@@ -108,7 +114,7 @@ export default function PunchEnterButton() {
                               visible={showResponseModal}
                               onRequestClose={handleResponseModalCancel}
                         >
-                              <View style={styles.container}>
+                              <View style={styles.centeredView}>
                                     <View style={styles.modalView}>
                                           <Pressable style={styles.closeModal} onPress={handleResponseModalCancel}>
                                                 <Text>
@@ -117,107 +123,17 @@ export default function PunchEnterButton() {
                                           </Pressable>
                                           <Text style={styles.modalTitle}>
                                                 {showResponseStatus ? <CircleCheckBig color="green" size={50} /> : <CircleX color="red" size={50} />}
-                                              
+
                                           </Text>
                                           <Text>{responseMsg}   </Text>
                                     </View>
                               </View>
                         </Modal>
                   </View>
-              
+
             </>
       );
 };
 
-const styles = StyleSheet.create({
-      container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-      },
-      button: {
-            width: '100%',
-            padding: 15,
-            backgroundColor: 'green',
-            borderRadius: 5,
-            alignItems: 'center',
-            marginTop: 20,
-      },
-      buttonText: {
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: 'bold',
-      },
-      modalContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-      },
-      modalView: {
-            width: 300,
-            backgroundColor: 'white',
-            borderRadius: 20,
-            padding: 35,
-            alignItems: 'center',
-            shadowColor: '#000',
-            shadowOffset: {
-                  width: 0,
-                  height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 4,
-            elevation: 5,
-      },
-      modalTitle: {
-            fontSize: 18,
-            fontWeight: 'bold',
-            paddingBottom: 20,
-            color: 'green',
-      },
-      buttonContainer: {
-            gap: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 20,
-      },
-      confirmColor: {
-            color: '#fff',
-            padding: 10,
-            backgroundColor: 'green',
-      },
-      confirmButtonText: {
-            color: '#fff',
 
-      },
-      errorMsg: {
-            padding: 10,
-            borderRadius: 5,
-            fontSize: 18,
-            backgroundColor: 'red',
-            color: '#fff',
-            borderWidth: 1,
-      },
-      success: {
-            padding: 10,
-            borderRadius: 5,
-            fontSize: 18,
-            backgroundColor: 'green',
-            color: '#fff',
-            borderWidth: 1,
-      },
-      closemodal: {
-            position: 'absolute',
-            top: 6,
-            left: 6,
-
-      },
-      closeModal: {
-            position: 'absolute',
-            top: 10,
-            left: 10,
-      },
-
-
-});
 
