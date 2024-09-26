@@ -6,7 +6,7 @@ import { checkGPS, checkLocationPermission } from '@/services/LoactionService';
 import PunchEnterButton from './PunchEnterButton';
 import PunchLeaveButton from './PunchLeaveButton';
 import PunchProofButton from './PunchProofButton';
-import styles from '@/assets/styles/styles';
+import styles from '../assets/styles/styles';
 
 export default function PunchCard() {
   const [GPSerrorMsg, setGPSErrorMsg] = useState<string | null>(null);
@@ -41,10 +41,9 @@ export default function PunchCard() {
 
 
 
-    <View style={styles.card}>
+    <View style={styles.actionStripe}>
 
 
-      <Text style={styles.cardTitle}>الحضور والانصراف</Text>
       <PunchEnterButton />
       <PunchProofButton />
       <PunchLeaveButton />

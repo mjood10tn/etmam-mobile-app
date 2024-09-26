@@ -5,7 +5,7 @@ import { CircleCheckBig, CircleX, X } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-import styles from '@/assets/styles/styles';
+import styles from '../assets/styles/styles';
 
 
 
@@ -69,44 +69,47 @@ export default function PunchLeaveButton() {
             <>
 
                   <View >
-                        <TouchableOpacity onPress={handlePress}>
-                              <LinearGradient colors={['#cf2d2d', '#f7dada']} style={styles.button} start={[1, 0]} end={[0, 4]}>
-                                    <Text style={styles.buttonText}>تسجيل الخروج</Text>
-                                    <Ionicons name="log-out-outline" size={24} color="white" />
-                              </LinearGradient>
-                        </TouchableOpacity>
 
+                        <TouchableOpacity
+                              style={[styles.actionButton, { backgroundColor: '#EF4444' }]}
+                              onPress={handlePress}        >
+                              <Ionicons name="log-out-outline" size={32} color="#FFFFFF" />
+                              <Text style={styles.actionButtonText}>تسجيل الخروج</Text>
+                        </TouchableOpacity>
                   </View>
 
-                  {/* confirm modal */}
                   <View>
-
                         <Modal
                               animationType="fade"
                               transparent={true}
                               visible={modalVisible}
-                              onRequestClose={handleCancel}>
+                              onRequestClose={handlePress}
+                        >
                               <View style={styles.centeredView}>
                                     <View style={styles.modalView}>
-                                          <Text style={[styles.modalTitle, styles.red]}> تسجيل خروج </Text>
-                                          <Text>هل انت متأكد من المتابعة؟</Text>
+                                          <Text style={[styles.modalTitle,styles.red]}>تسجيل خروج</Text>
+                                          <Text style={styles.modalText}>هل انت متأكد من المتابعة؟</Text>
+
                                           <View style={styles.modalButtons}>
-                                                <Pressable
-                                                      disabled={isLoading}
+                                                <TouchableOpacity
                                                       style={[styles.modalButton, styles.buttonConfirm]}
-                                                      onPress={handleConfirm}>
-                                                      <Text style={styles.textStyle} > {isLoading ? 'جاري الارسال...' : 'تأكيد'}</Text>
-                                                </Pressable>
-                                                <Pressable
+                                                      onPress={handleConfirm}
                                                       disabled={isLoading}
+                                                >
+                                                      <Text style={styles.modalButtonText}> {isLoading ? 'جاري الارسال...' : 'تأكيد'}</Text>
+                                                </TouchableOpacity>
+                                                <TouchableOpacity
                                                       style={[styles.modalButton, styles.buttonCancel]}
-                                                      onPress={handleCancel}>
-                                                      <Text style={styles.textStyle}>إلغاء</Text>
-                                                </Pressable>
+                                                      onPress={handleCancel}
+                                                      disabled={isLoading}
+                                                >
+                                                      <Text style={styles.modalButtonText}>إلغاء</Text>
+                                                </TouchableOpacity>
                                           </View>
                                     </View>
                               </View>
                         </Modal>
+                      
                   </View>
                   {/* Response modal */}
                   <View>

@@ -1,164 +1,238 @@
-import { StyleSheet } from "react-native"
-import { green } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
+import { StyleSheet,Platform} from "react-native"
 
-export default StyleSheet.create({
-      cardTitle: {
-            fontSize: 20,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            marginBottom: 20,
-            color: '#333333',
-      },
+ const style = StyleSheet.create({
       container: {
-            flex: 1,
-      },
-      safeArea: {
-            flex: 1,
-      },
-      scrollView: {
-            padding: 20,
+        flex: 1,
+        backgroundColor: '#f1f1f1',
       },
       header: {
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            marginBottom: 20,
+        flexDirection: 'row-reverse',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#F59E0B',
+        padding: 16,
+      },
+      headerTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
       },
       logoutButton: {
-            padding: 10,
-            backgroundColor: 'rgba(218, 119, 5, 0.8)',
-            borderRadius: 20,
+        padding: 8,
       },
-      card: {
-            borderRadius: 16,
-            padding: 20,
-            marginBottom: 20,
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      scrollView: {
+        padding: 16,
+      },
+      userCard: {
+        flexDirection: 'row',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        alignItems: 'center',
+        ...Platform.select({
+          ios: {
             shadowColor: "#000",
-            shadowOffset: {
-                  width: 0,
-                  height: 2,
-            },
-            shadowOpacity: 0.23,
-            shadowRadius: 2.62,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          },
+          android: {
             elevation: 4,
+          },
+        }),
       },
-      userInfoContainer: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-      },
-      avatar: {
-            width: 60,
-            height: 60,
-            borderRadius: 30,
-            backgroundColor: '#DA7705',
-            justifyContent: 'center',
-            alignItems: 'center',
+      avatarContainer: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: '#F59E0B',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 16,
       },
       avatarText: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            color: 'white',
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
       },
       userInfo: {
-            flex: 1,
-            marginRight: 10,
+        flex: 1,
       },
-      name: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            marginBottom: 5,
-            textAlign: 'right',
-            color: '#333333',
+      userName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1F2937',
+        textAlign: 'left',
       },
-      detail: {
-            fontSize: 14,
-            marginBottom: 2,
-            textAlign: 'right',
-            color: '#666666',
+      userDetail: {
+        fontSize: 14,
+        color: '#6B7280',
+        textAlign: 'left',
       },
-      button: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            padding: 15,
-            borderRadius: 25,
-            marginBottom: 10,
-            justifyContent: 'flex-end',
+      actionStripe: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20,
       },
-      buttonText: {
-            color: 'white',
-            fontSize: 18,
-            fontWeight: '500',
-            marginRight: 10,
+      actionButton: {
+            width: 110,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 16,
+        borderRadius: 12,
+        marginHorizontal: 4,
       },
-      bottomNav: {
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            paddingVertical: 10,
-            borderTopWidth: 1,
-            borderTopColor: 'rgba(238, 238, 238, 0.5)',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      actionButtonText: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontWeight: 'bold',
+        marginTop: 8,
+        textAlign: 'center',
+      },
+      attendanceCard: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        ...Platform.select({
+          ios: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          },
+          android: {
+            elevation: 4,
+          },
+        }),
+      },
+      attendanceTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1F2937',
+        marginBottom: 16,
+        textAlign: 'left',
+      },
+      attendanceHeader: {
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderBottomColor: '#E5E7EB',
+        paddingBottom: 8,
+      },
+      dayColumn: {
+        width: 80,
+        alignItems: 'center',
+    
+      },
+      dayText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#4B5563',
+      },
+      attendanceBody: {
+        flexDirection: 'row',
+        marginTop: 8,
+      },
+      punchCell: {
+        alignItems: 'center',
+        marginVertical: 4,
+      },
+      punchTime: {
+        fontSize: 12,
+        fontWeight: '500',
+        color: '#FFFFFF',
+        paddingHorizontal: 6,
+        paddingVertical: 1,
+        borderRadius: 6,
+      },
+      infoSection: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 16,
+        ...Platform.select({
+          ios: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          },
+          android: {
+            elevation: 4,
+          },
+        }),
+      },
+      infoTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1F2937',
+        marginBottom: 16,
+        textAlign: 'right',
+      },
+      infoCard: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 12,
+        justifyContent: 'flex-end',
+      },
+      infoText: {
+        fontSize: 14,
+        color: '#4B5563',
+        marginRight: 12,
+        textAlign: 'right',
       },
       centeredView: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
       },
       modalView: {
-            margin: 20,
-            backgroundColor: 'white',
-            borderRadius: 20,
-            padding: 35,
-            alignItems: 'center',
-            shadowColor: '#000',
-            shadowOffset: {
-                  width: 0,
-                  height: 2
-            },
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 24,
+        alignItems: 'center',
+        ...Platform.select({
+          ios: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.25,
             shadowRadius: 4,
-            elevation: 5
+          },
+          android: {
+            elevation: 5,
+          },
+        }),
       },
       modalText: {
-            marginBottom: 15,
-            textAlign: 'center',
-            fontSize: 18,
-            color: '#333333',
+        marginBottom: 16,
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#1F2937',
       },
       modalButtons: {
-            marginTop: 20,
-            flexDirection: 'row',
-            // justifyContent: 'space-between',
-            width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
       },
       modalButton: {
-            borderRadius: 10,
-            padding: 10,
-            margin: 10,
-            elevation: 2,
-            minWidth: 100,
+        borderRadius: 8,
+        padding: 12,
+        minWidth: 100,
       },
       buttonConfirm: {
-            backgroundColor: '#2196F3',
+        backgroundColor: '#10B981',
       },
       buttonCancel: {
-            backgroundColor: '#FF0000',
+        backgroundColor: '#EF4444',
       },
-      textStyle: {
-            color: 'white',
-            fontWeight: 'bold',
-            textAlign: 'center',
+      modalButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
       },
-
-      modalContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-      },
-
       modalTitle: {
             fontSize: 18,
             fontWeight: 'bold',
@@ -174,48 +248,11 @@ export default StyleSheet.create({
       blue: {
             color: '#3a88f0',
       },
-      buttonContainer: {
-            gap: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 20,
-      },
-      confirmColor: {
-            color: '#fff',
-            padding: 10,
-            backgroundColor: 'green',
-      },
-      confirmButtonText: {
-            color: '#fff',
-
-      },
-      errorMsg: {
-            padding: 10,
-            borderRadius: 5,
-            fontSize: 18,
-            backgroundColor: 'red',
-            color: '#fff',
-            borderWidth: 1,
-      },
-      success: {
-            padding: 10,
-            borderRadius: 5,
-            fontSize: 18,
-            backgroundColor: 'green',
-            color: '#fff',
-            borderWidth: 1,
-      },
-      closemodal: {
+      closeModal: {
             position: 'absolute',
             top: 6,
             left: 6,
 
       },
-      closeModal: {
-            position: 'absolute',
-            top: 10,
-            left: 10,
-      },
-
-
-});
+    });
+    export default style;

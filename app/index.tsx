@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ScrollView, RefreshControl, I18nManager, StyleSheet } from 'react-native';
+import { ScrollView, RefreshControl } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { loadUser, } from "@/services/AuthService";
 import SplashScreen from '../screens/SplashScreen'
@@ -13,10 +13,11 @@ import Constants from 'expo-constants';
 import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
 import TestScreen from "@/screens/TestScreen";
-import { LinearGradient } from "expo-linear-gradient";
+import LoginTestScreen from "@/screens/LoginTestScreen";
+
 
 const Stack = createStackNavigator();
-I18nManager.forceRTL(true);
+
 const App = () => {
   const [user, setUser] = useState();
   const [status, setStatus] = useState("loading");
@@ -62,17 +63,17 @@ const App = () => {
 
 
   // to refresh the page
-  const onRefresh = async () => {
-    setRefreshing(true);
-    try {
-      const user = await loadUser();
-      setUser(user);
+  // const onRefresh = async () => {
+  //   setRefreshing(true);
+  //   try {
+  //     const user = await loadUser();
+  //     setUser(user);
 
-    } catch (e) {
-      console.log(e);
-    }
-    setRefreshing(false);
-  };
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  //   setRefreshing(false);
+  // };
   if (status === "loading") {
     return <SplashScreen />;
   }
@@ -83,12 +84,12 @@ const App = () => {
   return (
       <AuthContext.Provider value={{ user, setUser }}>
 
-        <ScrollView
+        {/* <ScrollView
           contentContainerStyle={{ flex: 1 }}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-        >
+        > */}
 
           {getIsUpdated ? null : <UpdateRequiredModal />}
           <Stack.Navigator>
@@ -105,6 +106,7 @@ const App = () => {
               <Stack.Screen
                 name="Login"
                 // component={TestScreen}
+                // component={LoginTestScreen}
                 component={LoginScreen}
                 options={{
                   title: 'تسجيل الدخول',
@@ -113,7 +115,7 @@ const App = () => {
               />
             )}
           </Stack.Navigator>
-        </ScrollView>
+        {/* </ScrollView> */}
       </AuthContext.Provider>
   );
 };
