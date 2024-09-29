@@ -2,7 +2,7 @@
   "expo": {
     "name": "إتمام",
     "slug": "etmam-mobile-app",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/logos/icon.png",
     "scheme": "myapp",
@@ -12,10 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#F8F9FA"
     },
- 
     "android": {
       "rtl": true,
-      "versionCode": 103,
+      "versionCode": 104,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logos/adaptive-icon.png",
         "resizeMode": "contain",
