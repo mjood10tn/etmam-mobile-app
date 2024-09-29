@@ -2,7 +2,6 @@ import { sendLoaction } from '@/services/LoactionService';
 import React, { useState } from 'react';
 import { View, Text, Pressable, Modal, TouchableOpacity } from 'react-native';
 import { CircleCheckBig, CircleX, X } from 'lucide-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 import styles from '../assets/styles/styles';
@@ -34,6 +33,7 @@ export default function PunchProofButton() {
                               await setResponseMsg('تم إثبات التواجد بنجاح');
                               await setResponseStatus(true);
                               await setResponseModal(true);
+                          
                         }
 
                   } catch (e: any) {

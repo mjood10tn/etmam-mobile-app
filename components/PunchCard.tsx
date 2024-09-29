@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, I18nManager, AppState } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-
+import { View, AppState } from 'react-native';
 import { checkGPS, checkLocationPermission } from '@/services/LoactionService';
 import PunchEnterButton from './PunchEnterButton';
 import PunchLeaveButton from './PunchLeaveButton';
