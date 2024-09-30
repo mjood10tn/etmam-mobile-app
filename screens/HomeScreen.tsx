@@ -2,10 +2,9 @@ import PunchCard from '@/components/PunchCard';
 import AuthContext from '@/contexts/AuthContext';
 import { logout } from '@/services/AuthService';
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator, } from 'react-native';
+import {  Text, View, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator, } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../assets/styles/styles';
 import AttendanceCard from '@/components/AttendanceCard';
 
