@@ -11,11 +11,22 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F59E0B',
     padding: 16,
+    borderBottomWidth: 3,
+    borderBottomColor: '#F59E0B',
+  },
+  headerTitleContainer: {
+    flexDirection: 'row',
+    flex: 1,
   },
   headerTitle: {
     fontSize: 20,
+    // fontWeight: 'bold',
+    color: '#fff',
+  },
+  headerTitleEtmam: {
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#fff',
   },
   logoutButton: {
     padding: 8,
@@ -274,6 +285,15 @@ const style = StyleSheet.create({
     padding: 6,
     borderRadius: 8,
     backgroundColor: '#F59E0B',
+  },
+  logoContainer:{
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    borderRadius: 10,
+    // backgroundColor: '#fff',
+    marginLeft: 10,
+    color: '#fff',
   }
 });
 export default style;

@@ -2,19 +2,22 @@ import PunchCard from '@/components/PunchCard';
 import AuthContext from '@/contexts/AuthContext';
 import { logout } from '@/services/AuthService';
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator, } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, SafeAreaView, ActivityIndicator,   Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../assets/styles/styles';
 import AttendanceCard from '@/components/AttendanceCard';
+import { Inter_900Black, useFonts } from '@expo-google-fonts/inter';
 
 // Enable RTL layout
 
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [loaded, error] = useFonts({
+    Inter_900Black,
+  });
   const { user, setUser } = useContext(AuthContext);
 
   async function handleLogout() {
@@ -37,11 +40,21 @@ export default function HomeScreen() {
           {isLoading ? (
             <ActivityIndicator />
           ) : (
-            <Ionicons name="log-out-outline" size={24} color="#FFFFFF" />
+            <Ionicons name="log-out-outline" size={24} color="#fff" />
           )}
 
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>لوحة التحكم</Text>
+        <View style={styles.headerTitleContainer}>
+          <Text style={styles.headerTitle}>مرحبا بك, في </Text>
+          <Text style={styles.headerTitleEtmam}>إتمام</Text>
+          <View >
+            <Image style={styles.logoContainer}
+              source={require('../assets/images/logos/logoText.png')} // Replace with your actual logo
+             
+            />
+          </View>
+        </View>
+
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollView}>
