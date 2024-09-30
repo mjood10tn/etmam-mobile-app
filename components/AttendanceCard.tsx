@@ -63,11 +63,11 @@ export default function AttendanceCard() {
                                     {attendanceData.map((day, dayIndex) => (
                                           <View key={dayIndex} style={styles.dayColumn}>
                                                 {day.punches.map((punch, punchIndex) => (
-                                                      <View key={punchIndex} style={styles.punchCell}>
-                                                            <Text style={[
-                                                                  styles.punchTime,
-                                                                  { backgroundColor: punch.type === '0' ? '#10B981' : punch.type === '1' ? '#EF4444' : '#3B82F6' }
-                                                            ]}>
+                                                      <View key={punchIndex} style={[
+                                                            styles.punchCell,
+                                                            { backgroundColor: punch.type === '0' ? '#10B981' : punch.type === '1' ? '#EF4444' : '#3B82F6' }
+                                                      ]}>
+                                                            <Text style={styles.punchTime}>
                                                                   {punch.time}
                                                             </Text>
                                                       </View>

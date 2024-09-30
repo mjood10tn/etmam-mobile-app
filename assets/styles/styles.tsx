@@ -146,14 +146,15 @@ const style = StyleSheet.create({
   punchCell: {
     alignItems: 'center',
     marginVertical: 4,
-  },
-  punchTime: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: '#FFFFFF',
     paddingHorizontal: 6,
     paddingVertical: 1,
     borderRadius: 6,
+  },
+  punchTime: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#FFF',
+    
   },
   infoSection: {
     backgroundColor: '#FFFFFF',
