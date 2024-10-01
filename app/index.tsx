@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 const App = () => {
   const [user, setUser] = useState();
   const [status, setStatus] = useState("loading");
-  const [refreshing, setRefreshing] = useState(false);
+  // const [refreshing, setRefreshing] = useState(false);
   const [getIsRooted, setIsRooted] = useState(false);
   const [getIsUpdated, setIsUpdated] = useState(false);
 
@@ -29,10 +29,12 @@ const App = () => {
     async function runEffect() {
       try {
         // Check if the app is updated
-        const serverVersion = await getMobileAppVersion();
-
-        if (Constants.expoConfig?.version === serverVersion.app_version) {
-          // app is updated to the latest version
+        const serverAppVersion = await getMobileAppVersion();
+        const serverAppVersionAsANumber= serverAppVersion.app_version.replace(/\./g, '');
+        const appVersionAsANumber= (Constants.expoConfig?.version ?? '0.0.0').replace(/\./g, '');
+       
+        if (appVersionAsANumber >= serverAppVersionAsANumber) {
+          // app is updated to the latest version or higher
           setIsUpdated(true);
         } else {
           setIsUpdated(false);
