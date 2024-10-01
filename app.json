@@ -37,9 +37,7 @@
     "plugins": [
       "expo-router",
       "expo-localization",
-      "expo-font",{
-        "fonts": ["./assets/fonts/Inter-Black.otf"]
-      }
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

@@ -16,7 +16,7 @@ const style = StyleSheet.create({
   },
   headerTitleContainer: {
     flexDirection: 'row',
-    flex: 1,
+     alignItems:'center'
   },
   headerTitle: {
     fontSize: 20,
@@ -27,6 +27,7 @@ const style = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#fff',
+    fontFamily: 'Inter_900Black',
   },
   logoutButton: {
     padding: 8,
@@ -286,14 +287,15 @@ const style = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#F59E0B',
   },
-  logoContainer:{
+  logoapp:{
     width: 50,
     height: 50,
     resizeMode: 'contain',
     borderRadius: 10,
-    // backgroundColor: '#fff',
-    marginLeft: 10,
+ 
+    // marginLeft: 1,
     color: '#fff',
+
   }
 });
 export default style;
