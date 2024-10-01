@@ -12,8 +12,8 @@ import React from "react";
 import Constants from 'expo-constants';
 import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
-import TestScreen from "@/screens/TestScreen";
-import LoginTestScreen from "@/screens/LoginTestScreen";
+// import TestScreen from "@/screens/TestScreen";
+// import LoginTestScreen from "@/screens/LoginTestScreen";
 
 
 const Stack = createStackNavigator();
