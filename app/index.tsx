@@ -12,6 +12,8 @@ import React from "react";
 import Constants from 'expo-constants';
 import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
+import { isServerAvailable } from "@/services/ConnectionService";
+import NoInternetConnectionModel from "@/components/NoInternetConnectionModel";
 // import TestScreen from "@/screens/TestScreen";
 // import LoginTestScreen from "@/screens/LoginTestScreen";
 
@@ -23,7 +25,8 @@ const App = () => {
   const [status, setStatus] = useState("loading");
   // const [refreshing, setRefreshing] = useState(false);
   const [getIsRooted, setIsRooted] = useState(false);
-  const [getIsUpdated, setIsUpdated] = useState(false);
+  const [getIsUpdated, setIsUpdated] = useState(true);
+  const [getIsServerAvailable, setIsServerAvailable] = useState(true);
 
   useEffect(() => {
     async function runEffect() {
@@ -42,7 +45,8 @@ const App = () => {
 
       } catch (e) {
         console.log(e);
-      }
+        setIsServerAvailable(false);
+      } 
       try {
         // Load user from local storage
         const user = await loadUser();
@@ -63,19 +67,6 @@ const App = () => {
     runEffect();
   }, []);
 
-
-  // to refresh the page
-  // const onRefresh = async () => {
-  //   setRefreshing(true);
-  //   try {
-  //     const user = await loadUser();
-  //     setUser(user);
-
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  //   setRefreshing(false);
-  // };
   if (status === "loading") {
     return <SplashScreen />;
   }
@@ -86,13 +77,7 @@ const App = () => {
   return (
       <AuthContext.Provider value={{ user, setUser }}>
 
-        {/* <ScrollView
-          contentContainerStyle={{ flex: 1 }}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-        > */}
-
+          {getIsServerAvailable ? null : <NoInternetConnectionModel />}
           {getIsUpdated ? null : <UpdateRequiredModal />}
           <Stack.Navigator>
 
