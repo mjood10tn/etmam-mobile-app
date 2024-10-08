@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'إتمام'
+rootProject.name = 'بصمة إتمام'
 
 dependencyResolutionManagement {
   versionCatalogs {
