@@ -123,7 +123,7 @@ export default function PunchProofButton() {
                                     <View style={styles.modalView}>
                                           <Pressable style={styles.closeModal} onPress={handleResponseModalCancel}>
                                                 <Text>
-                                                      <X color="gray" size={25} />
+                                                      <X color="gray" size={30} />
                                                 </Text>
                                           </Pressable>
                                           <Text style={styles.modalTitle}>

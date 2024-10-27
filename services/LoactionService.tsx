@@ -23,7 +23,7 @@ async function getLocation(): Promise<Location.LocationObject | null> {
   if (hasPermission) {
     try {
       const location = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.High,
+        accuracy: Location.Accuracy.Balanced,
       });
       return location;
     } catch (error) {

@@ -12,7 +12,6 @@ import React from "react";
 import Constants from 'expo-constants';
 import UpdateRequiredModal from "@/components/UpdateRequiredModal";
 import { getMobileAppVersion } from "@/services/DeviceService";
-import { isServerAvailable } from "@/services/ConnectionService";
 import NoInternetConnectionModel from "@/components/NoInternetConnectionModel";
 // import TestScreen from "@/screens/TestScreen";
 // import LoginTestScreen from "@/screens/LoginTestScreen";

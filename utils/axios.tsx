@@ -1,9 +1,11 @@
 import axiosLib from "axios";
 import { getToken } from "../services/TokenService";
 
-const axios = axiosLib.create({
-      // baseURL: `https://etmam.qcc.org.sa/api`,
-      baseURL: `https://fdd45g6fxj.sharedwithexpose.com/api`,
+
+
+const axios = axiosLib.create( {
+         // baseURL: `https://etmam.qcc.org.sa/api/`,
+      baseURL: `https://gkb84krclr.sharedwithexpose.com/api/`,
       headers: {
             Accept: "application/json",
       },

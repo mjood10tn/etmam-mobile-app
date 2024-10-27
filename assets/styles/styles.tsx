@@ -16,7 +16,7 @@ const style = StyleSheet.create({
   },
   headerTitleContainer: {
     flexDirection: 'row',
-     alignItems:'center'
+    alignItems: 'center'
   },
   headerTitle: {
     fontSize: 20,
@@ -104,6 +104,7 @@ const style = StyleSheet.create({
     textAlign: 'center',
   },
   attendanceCard: {
+
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 16,
@@ -124,7 +125,7 @@ const style = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#1F2937',
-  
+
     textAlign: 'left',
   },
   attendanceHeader: {
@@ -138,22 +139,26 @@ const style = StyleSheet.create({
     alignItems: 'center',
 
   },
+
   dayText: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#4B5563',
 
-  }, 
-   dayTextActive: {
+  },
+  dayTextActive: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#4d4b63 ',
     borderBottomWidth: 1,
-    borderBottomColor: '#F59E0B', 
+    borderBottomColor: '#F59E0B',
   },
   attendanceBody: {
     flexDirection: 'row',
     marginTop: 8,
+  },
+  scrollContent: {
+    flexDirection: 'row',
   },
   punchCell: {
     alignItems: 'center',
@@ -166,7 +171,7 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#FFF',
-    
+
   },
   infoSection: {
     backgroundColor: '#FFFFFF',
@@ -213,7 +218,7 @@ const style = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 12,
-    padding: 24,
+    padding: 50,
     alignItems: 'center',
     ...Platform.select({
       ios: {
@@ -273,7 +278,7 @@ const style = StyleSheet.create({
     position: 'absolute',
     top: 6,
     left: 6,
-
+    padding: 6,
   },
 
   cardHeader: {
@@ -282,17 +287,17 @@ const style = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
-  reloadBtn:{
+  reloadBtn: {
     padding: 6,
     borderRadius: 8,
     backgroundColor: '#F59E0B',
   },
-  logoapp:{
+  logoapp: {
     width: 50,
     height: 50,
     resizeMode: 'contain',
     borderRadius: 10,
- 
+
     // marginLeft: 1,
     color: '#fff',
 

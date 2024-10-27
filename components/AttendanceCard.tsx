@@ -5,7 +5,6 @@ import styles from '../assets/styles/styles';
 import { getAttendance } from '@/services/AttendanceService';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-
 interface Punch {
       type: string;
       time: string;
@@ -21,6 +20,9 @@ export default function AttendanceCard() {
       const [isLoading, setIsLoading] = useState(false);
 
       const fetchData = async () => {
+
+
+
             setIsLoading(true);
             const data = await getAttendance();
             setattendanceData(data.attendance);
@@ -37,15 +39,15 @@ export default function AttendanceCard() {
             <View style={styles.attendanceCard}>
                   <View style={styles.cardHeader}>
                         <Text style={styles.attendanceTitle}>سجل الحضور (آخر 7 أيام)</Text>
-                        <TouchableOpacity  style={styles.reloadBtn} disabled={isLoading}
-                        onPress={fetchData}
+                        <TouchableOpacity style={styles.reloadBtn} disabled={isLoading}
+                              onPress={fetchData}
                         >
                               {isLoading ? (
                                     <ActivityIndicator />
                               ) : (
                                     <Ionicons name="reload" size={20} color="#FFFFFF" />
                               )}
-                           
+
                         </TouchableOpacity>
                   </View>
                   <ScrollView horizontal showsHorizontalScrollIndicator={false}>
