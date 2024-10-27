@@ -2,7 +2,7 @@
   "expo": {
     "name": "بصمة إتمام",
     "slug": "etmam-mobile-app",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/images/logos/icon.png",
     "scheme": "myapp",
@@ -14,7 +14,7 @@
     },
     "android": {
       "rtl": true,
-      "versionCode": 105,
+      "versionCode": 106,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logos/adaptive-icon.png",
         "resizeMode": "contain",
@@ -23,8 +23,11 @@
       "package": "com.mjood10tn.etmammobileapp"
     },
     "ios": {
+      "buildNumber": 106,
       "bundleIdentifier": "com.mjood10tn.etmammobileapp",
       "infoPlist": {
+        "CFBundleShortVersionString": "1.0.6",
+        "CFBundleVersion": "106",
         "ExpoLocalization_supportsRTL": true,
         "ExpoLocalization_forcesRTL": true
       }
@@ -52,6 +55,6 @@
         "projectId": "812e23f8-9414-4725-900e-5b2a8bf6be2d"
       }
     },
-    "runtimeVersion": "1.0.0"
+    "runtimeVersion": "1.0.1"
   }
 }
