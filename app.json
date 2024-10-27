@@ -23,7 +23,7 @@
       "package": "com.mjood10tn.etmammobileapp"
     },
     "ios": {
-      "buildNumber": 106,
+      "buildNumber": "106",
       "bundleIdentifier": "com.mjood10tn.etmammobileapp",
       "infoPlist": {
         "CFBundleShortVersionString": "1.0.6",
