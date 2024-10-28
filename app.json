@@ -26,8 +26,6 @@
       "buildNumber": "106",
       "bundleIdentifier": "com.mjood10tn.etmammobileapp",
       "infoPlist": {
-        "CFBundleShortVersionString": "1.0.6",
-        "CFBundleVersion": "106",
         "ExpoLocalization_supportsRTL": true,
         "ExpoLocalization_forcesRTL": true
       }
