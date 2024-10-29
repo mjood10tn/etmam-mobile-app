@@ -23,7 +23,7 @@
       "package": "com.mjood10tn.etmammobileapp"
     },
     "ios": {
-      "buildNumber": "106",
+      "buildNumber": "1060",
       "bundleIdentifier": "com.mjood10tn.etmammobileapp",
       "infoPlist": {
         "ExpoLocalization_supportsRTL": true,

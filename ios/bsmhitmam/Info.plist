@@ -39,7 +39,7 @@
       </dict>
     </array>
     <key>CFBundleVersion</key>
-    <string>106</string>
+    <string>1060</string>
     <key>ExpoLocalization_forcesRTL</key>
     <true/>
     <key>ExpoLocalization_supportsRTL</key>
@@ -61,6 +61,7 @@
     <string>Allow $(PRODUCT_NAME) to access your location</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
